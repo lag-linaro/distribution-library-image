@@ -1,0 +1,14 @@
+runtime:
+  nodePool:
+    shippable_shared_aarch64
+
+build:
+  ci:
+    - docker build -t docker.io/laglinaro/distribution-library-image:1 2.6
+  on_success:
+    - docker push docker.io/laglinaro/distribution-library-image:1
+
+integrations:
+  hub:
+    - integrationName: docker-hub
+      type: dockerRegistryLogin
